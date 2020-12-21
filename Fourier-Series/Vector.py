@@ -13,6 +13,15 @@ class Vector:
         self.imaginary = complex.imag
         self.complex = complex.conjugate()
 
+    def getReal(self):
+        return self.real
+
+    def getImaginary(self):
+        return self.imaginary
+
+    def getComplex(self):
+        return self.complex
+
     def resetComponents(self):
         self.real = 0
         self.imaginary = 0
