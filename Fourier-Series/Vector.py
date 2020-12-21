@@ -23,3 +23,14 @@ class Vector:
         print("Imaginary Component: %d" % self.imaginary)
         print("Real Component: %d" % self.complex)
 
+        class Calculator:
+
+            def __init__(self, vector):
+                self.vector = vector
+
+            @staticmethod
+            def calculateConstant(n):
+                import math
+                import scipy.integrate as sci
+                import numpy as np
+                return sci.quad(lambda t: math.e ** (-n * 2 * math.pi * 1j * t), 0, 1)
