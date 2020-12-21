@@ -1,11 +1,14 @@
 class Vector:
 
+    import numpy as np
+    import scipy as sci
+
     def __init__(self):
         self.real = 0
         self.imaginary = 0
         self.complex = 0 + 0j
 
-    def setComponents(complex):
+    def setComponents(self, complex):
         self.real = complex.real
         self.imaginary = complex.imag
         self.complex = complex.conjugate()
