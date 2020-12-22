@@ -1,5 +1,5 @@
 time = 0
-
+import Vector
 def main():
     global time
     # do stuff
