@@ -8,7 +8,7 @@ class Vector:
     def setComponents(self, complex):
         self.real = complex.real
         self.imaginary = complex.imag
-        self.complex = complex.conjugate()
+        self.complex = complex
 
     def getReal(self):
         return self.real
@@ -19,16 +19,14 @@ class Vector:
     def getComplex(self):
         return self.complex
 
-    def getFunction(self):
-        return self.function
-
     def resetComponents(self):
         self.real = 0
         self.imaginary = 0
         self.complex = 0 + 0j
 
     def print(self):
-        print("Real Component: %d" % self.real)
-        print("Imaginary Component: %d" % self.imaginary)
-        print("Real Component: %d" % self.complex)
+        print("Real Component: %f" % self.real)
+        print("Imaginary Component: %f" % self.imaginary)
+        print("Complex: %s" % self.complex)
+        print()
 

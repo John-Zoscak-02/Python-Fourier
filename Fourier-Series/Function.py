@@ -1,19 +1,20 @@
 from Vector import Vector
+import math
 
 
 class Function:
-
     def __init__(self, coef, n):
         self.coef = coef
         self.n = n
         self.vector = Vector()
+        self.vector.setComponents(coef)
 
-    def setFunction(self, coef, n):
-        self.coef = coef
-        self.n = n
+    def update(self, time):
+        self.vector.setComponents(Calculator.calculateVector(self, time))
 
     def print(self):
-        print("%de^(%d*2(pi)it)" % (self.coef, self.n))
+        print("({:.2f})e^(({:.2f})*2(PI)it)".format(self.coef, self.n))
+
 
 class Calculator:
 
@@ -29,6 +30,8 @@ class Calculator:
 
     @staticmethod
     def calculateVector(function, time):
-        #calculate a vector given a function and a time
-        return Vector()
+        complexVector = function.coef * (math.e ** (function.n * (2 * math.pi) * 1j * time))
+        return complexVector
+
+
 
