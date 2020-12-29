@@ -1,4 +1,4 @@
-Fourier-Series/venv/**
+/venv/**
 *.pyc
 
 
