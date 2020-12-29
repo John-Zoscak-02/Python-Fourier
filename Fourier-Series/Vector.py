@@ -25,8 +25,8 @@ class Vector:
         self.complex = 0 + 0j
 
     def print(self):
-        print("Real Component: %f" % self.real)
-        print("Imaginary Component: %f" % self.imaginary)
-        print("Complex: %s" % self.complex)
+        print("     Real Component: %f" % self.real)
+        print("     Imaginary Component: %f" % self.imaginary)
+        print("     Complex: %s" % self.complex)
         print()
 
