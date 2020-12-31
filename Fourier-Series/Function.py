@@ -9,7 +9,7 @@ class BaseFunction:
         self.coordinates = []
         for str in coordinatestrings:
             x_y = str.split(" ")
-            self.coordinates.append((int(x_y[0]), int(x_y[1])))
+            self.coordinates.append((float(x_y[0]), float(x_y[1])))
         self.numentries = len(self.coordinates)
         print(coordinatestrings)
         print(self.coordinates)
@@ -23,10 +23,12 @@ class BaseFunction:
         # return complex number representation of location based off of loc
         # loc can be understood as the "t" within a parametric equation. Finding the parametric equation that represents x and y
         intra_coordinate_loc = loc % (self.numentries - 1)
+        print(intra_coordinate_loc)
         ypara = (self.coordinates[int(intra_coordinate_loc) + 1][1] - self.coordinates[int(intra_coordinate_loc)][1])
         y = ((loc % 1) * ypara) + self.coordinates[int(intra_coordinate_loc)][1]
         xpara = (self.coordinates[int(intra_coordinate_loc) + 1][0] - self.coordinates[int(intra_coordinate_loc)][0])
         x = ((loc % 1) * xpara) + self.coordinates[int(intra_coordinate_loc)][0]
+        print(x + (y * 1j))
         return x + (y * 1j)
 
 

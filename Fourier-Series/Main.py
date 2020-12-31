@@ -2,15 +2,17 @@ from Function import Function, Calculator, BaseFunction
 
 import math
 filename_base_function = "star"
-range_of_n = range(-10, 10)
+range_of_n = range(-50, 50)
 
 def main():
-    global time
-    print("Iteration: %f" % time)
+    global iteration
+    print("Time: %f" % (iteration / 1000))
+    vector_sum = 0
     for function in functions:
-        function.update(time)
-        function.vector.print()
-    time += 1
+        function.update(iteration/1000)
+        vector_sum += function.vector.getComplex()
+    iteration += 1
+    print("     %s" % vector_sum)
     pass
 
 
@@ -20,9 +22,9 @@ if __name__ == "__main__":
     for n in range_of_n:
         functions.append(Function(Calculator.calculate_constant(n, base_function), n))
 
-    global time
-    time = 0
-    while time < 10:
+    global iteration
+    iteration = 0
+    while iteration < 1000:
         main()
 
     # function = Function(2.5, 1)
