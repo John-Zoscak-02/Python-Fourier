@@ -2,28 +2,47 @@ import numpy as np
 import matplotlib.pyplot as plot
 import matplotlib.animation as animation
 import cmath
+from Function import Function, Calculator, BaseFunction
+
+filename_base_function = "star"
+range_of_n = range(-50, 50)
 
 plot.style.use('dark_background')
-
 fig = plot.figure()
-ax = plot.axes(xlim=(-50, 50), ylim=(-50, 50))
+ax = plot.axes(xlim=(-10, 10), ylim=(-10, 10))
 line, = ax.plot([], [], lw=2)
+xdata, ydata =[], []
 
 def init():
     line.set_data([], [])
     return line,
 
 
-xdata, ydata =[], []
-
 def animate(t):
-    x = 10 * (0.5 + np.cos(3 * t)) * np.cos(t)
-    y = 10 * (0.5 + np.cos(3 * t)) * np.sin(t)
+    print("Time: %f" % t)
+    vector_sum = 0
+    for function in functions:
+        function.update(t)
+        vector_sum += function.vector.getComplex()
+
+    print("     %s" % vector_sum)
+    x = vector_sum.real
+    y = vector_sum.imag
     xdata.append(x)
     ydata.append(y)
     line.set_data(xdata, ydata)
     return line,
 
 
-anim = animation.FuncAnimation(fig, animate, init_func=init, frames=np.arange(0, 2 * cmath.pi, 0.01), interval=20, blit=True)
-plot.show()
+if __name__ == "__main__":
+    global functions
+    functions = []
+    base_function = BaseFunction(filename_base_function)
+    for n in range_of_n:
+        functions.append(Function(Calculator.calculate_constant(n, base_function), n))
+
+    anim = animation.FuncAnimation(fig, animate, init_func=init, frames=np.arange(0, 1, 0.01), interval=20, blit=True)
+    plot.show()
+
+
+

@@ -23,12 +23,10 @@ class BaseFunction:
         # return complex number representation of location based off of loc
         # loc can be understood as the "t" within a parametric equation. Finding the parametric equation that represents x and y
         intra_coordinate_loc = loc % (self.numentries - 1)
-        print(intra_coordinate_loc)
         ypara = (self.coordinates[int(intra_coordinate_loc) + 1][1] - self.coordinates[int(intra_coordinate_loc)][1])
         y = ((loc % 1) * ypara) + self.coordinates[int(intra_coordinate_loc)][1]
         xpara = (self.coordinates[int(intra_coordinate_loc) + 1][0] - self.coordinates[int(intra_coordinate_loc)][0])
         x = ((loc % 1) * xpara) + self.coordinates[int(intra_coordinate_loc)][0]
-        print(x + (y * 1j))
         return x + (y * 1j)
 
 
@@ -58,7 +56,6 @@ class Calculator:
         for i in range(0, 101):
             t = i / 100
             integration += basefunc.access(t)*(math.e ** (-n * 2 * math.pi * 1j * t))*0.01
-        print(integration)
         return integration
         #return sci.quad(lambda t: math.e ** (-n * 2 * math.pi * 1j * t), 0, 1)
 
