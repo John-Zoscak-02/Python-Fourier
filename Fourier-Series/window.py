@@ -17,8 +17,9 @@ def init():
 xdata, ydata =[], []
 
 def animate(t):
-    x = 10 * (0.5 + np.cos(3 * t)) * np.cos(t)
-    y = 10 * (0.5 + np.cos(3 * t)) * np.sin(t)
+    complex = 10 + 10j
+    x = complex.real * (0.5 + np.cos(3 * t)) * np.cos(t)
+    y = complex.imag * (0.5 + np.cos(3 * t)) * np.sin(t)
     xdata.append(x)
     ydata.append(y)
     line.set_data(xdata, ydata)
