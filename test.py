@@ -10,6 +10,6 @@ def f(t):
 
 
 result = quadpy.quad(f, 0, 1)
-print(result[0])
+print(result[0].imag)
 
 other = result[0] * cmath.e ** (-2 * cmath.pi * 2)
