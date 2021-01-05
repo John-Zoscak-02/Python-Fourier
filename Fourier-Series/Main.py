@@ -34,5 +34,3 @@ if __name__ == "__main__":
     #     print(t)
     #     function.update(t)
     #     function.vector.print()
-
-

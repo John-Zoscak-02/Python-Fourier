@@ -1,5 +1,4 @@
 class Vector:
-
     def __init__(self):
         self.real = 0
         self.imaginary = 0
