@@ -4,7 +4,7 @@ import matplotlib.animation as animation
 import cmath
 from Function import Function, Calculator, BaseFunction
 
-filename_base_function = "star"
+filename_base_function = "pi"
 range_of_n = range(-50, 50)
 
 plot.style.use('dark_background')
