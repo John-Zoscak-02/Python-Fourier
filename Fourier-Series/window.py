@@ -4,12 +4,12 @@ import matplotlib.animation as animation
 import cmath
 from Function import Function, Calculator, BaseFunction
 
-filename_base_function = "leaf"
+filename_base_function = ""
 range_of_n = range(-150, 150)
 
 plot.style.use('dark_background')
 fig = plot.figure()
-ax = plot.axes(xlim=(-20, 20), ylim=(-20, 20))
+ax = plot.axes(xlim=(-500, 500), ylim=(-500, 500))
 line, = ax.plot([], [], lw=2)
 xdata, ydata =[], []
 

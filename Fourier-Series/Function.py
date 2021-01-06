@@ -1,33 +1,51 @@
 from Vector import Vector
 import math
 
+from svg.path import parse_path
+from svg.path.path import Path
+from xml.dom import minidom
 
 class BaseFunction:
     def __init__(self, setname):
-        self.file = open("Sets/%s" % setname)
-        coordinatestrings = self.file.read().split("\n")
-        self.coordinates = []
-        for str in coordinatestrings:
-            x_y = str.split(" ")
-            self.coordinates.append((float(x_y[0]), float(x_y[1])))
-        self.numentries = len(self.coordinates)
-        print(coordinatestrings)
-        print(self.coordinates)
+        # self.file = open("Sets/%s" % setname)
+        # coordinatestrings = self.file.read().split("\n")
+        # self.coordinates = []
+        # for str in coordinatestrings:
+        #     x_y = str.split(" ")
+        #     self.coordinates.append((float(x_y[0]), float(x_y[1])))
+        # self.numentries = len(self.coordinates)
+        # print(coordinatestrings)
+        # print(self.coordinates)
+
+        self.file = minidom.parse('Sets/math-pi.svg')
+        self.path_strings = [path.getAttribute('d') for path
+                        in self.file.getElementsByTagName('path')]
+        self.file.unlink()
+
+        self.path = Path()
+        for path_string in self.path_strings:
+            self.path.append(parse_path(path_string))
+
+
 
     def print(self):
         print("Coordinates: %s" % self.coordinates)
         print("Num of Entries: %d" % self.numentries)
 
     def access(self, time):
-        loc = time * (self.numentries - 1)
+        # loc = int (time * (self.numentries - 1))
         # return complex number representation of location based off of loc
         # loc can be understood as the "t" within a parametric equation. Finding the parametric equation that represents x and y
-        intra_coordinate_loc = loc % (self.numentries - 1)
-        ypara = (self.coordinates[int(intra_coordinate_loc) + 1][1] - self.coordinates[int(intra_coordinate_loc)][1])
-        y = ((loc % 1) * ypara) + self.coordinates[int(intra_coordinate_loc)][1]
-        xpara = (self.coordinates[int(intra_coordinate_loc) + 1][0] - self.coordinates[int(intra_coordinate_loc)][0])
-        x = ((loc % 1) * xpara) + self.coordinates[int(intra_coordinate_loc)][0]
-        return x + (y * 1j)
+        # intra_coordinate_loc = (time * (self.numentries - 1)) % (self.numentries - 1)
+        # ypara = (self.coordinates[int(intra_coordinate_loc) + 1][1] - self.coordinates[int(intra_coordinate_loc)][1])
+        # y = ((loc % 1) * ypara) + self.coordinates[int(intra_coordinate_loc)][1]
+        # xpara = (self.coordinates[int(intra_coordinate_loc) + 1][0] - self.coordinates[int(intra_coordinate_loc)][0])
+        # x = ((loc % 1) * xpara) + self.coordinates[int(intra_coordinate_loc)][0]
+        # return x + (y * 1j)
+        return self.path.point(time)
+
+
+
 
 
 class Function:
