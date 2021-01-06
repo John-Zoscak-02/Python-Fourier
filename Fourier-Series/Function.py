@@ -19,7 +19,7 @@ class BaseFunction:
         print("Num of Entries: %d" % self.numentries)
 
     def access(self, time):
-        loc = time * self.numentries
+        loc = time * (self.numentries - 1)
         # return complex number representation of location based off of loc
         # loc can be understood as the "t" within a parametric equation. Finding the parametric equation that represents x and y
         intra_coordinate_loc = loc % (self.numentries - 1)
@@ -53,9 +53,9 @@ class Calculator:
     @staticmethod
     def calculate_constant(n, basefunc):
         integration = 0
-        for i in range(0, 101):
-            t = i / 100
-            integration += basefunc.access(t)*(math.e ** (-n * 2 * math.pi * 1j * t))*0.01
+        for i in range(0, 1001):
+            t = i / 1000
+            integration += basefunc.access(t)*(math.e ** (-n * 2 * math.pi * 1j * t))*0.001
         return integration
         #return sci.quad(lambda t: math.e ** (-n * 2 * math.pi * 1j * t), 0, 1)
 
