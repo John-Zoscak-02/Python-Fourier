@@ -9,7 +9,8 @@ range_of_n = range(-150, 150)
 
 plot.style.use('dark_background')
 fig = plot.figure()
-ax = plot.axes(xlim=(-500, 500), ylim=(-500, 500))
+ax = plot.axes(xlim=(0, 110), ylim=(0, 110))
+plot.gca().invert_yaxis()
 line, = ax.plot([], [], lw=2)
 xdata, ydata =[], []
 
