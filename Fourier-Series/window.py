@@ -4,12 +4,13 @@ import matplotlib.animation as animation
 import cmath
 from Function import Function, Calculator, BaseFunction
 
-filename_base_function = ""
-range_of_n = range(-150, 150)
+filename_base_function = "Sets/G-clef.svg"
+range_of_n = range(-200, 200)
 
 plot.style.use('dark_background')
 fig = plot.figure()
-ax = plot.axes(xlim=(-500, 500), ylim=(-500, 500))
+ax = plot.axes(xlim=(0, 250), ylim=(0, 250))
+plot.gca().invert_yaxis()
 line, = ax.plot([], [], lw=2)
 xdata, ydata =[], []
 
@@ -41,7 +42,8 @@ if __name__ == "__main__":
     for n in range_of_n:
         functions.append(Function(Calculator.calculate_constant(n, base_function), n))
 
-    anim = animation.FuncAnimation(fig, animate, init_func=init, frames=np.arange(0, 1.01, 0.01), interval=20, blit=True, repeat=False)
+    anim = animation.FuncAnimation(fig, animate, init_func=init, frames=np.arange(0.01, 1.0, 0.01), interval=20, blit=True, repeat=False)
+    plot.draw()
     plot.show()
 
 

@@ -17,7 +17,7 @@ class BaseFunction:
         # print(coordinatestrings)
         # print(self.coordinates)
 
-        self.file = minidom.parse('Sets/math-pi.svg')
+        self.file = minidom.parse(setname)
         self.path_strings = [path.getAttribute('d') for path
                         in self.file.getElementsByTagName('path')]
         self.file.unlink()
@@ -42,6 +42,7 @@ class BaseFunction:
         # xpara = (self.coordinates[int(intra_coordinate_loc) + 1][0] - self.coordinates[int(intra_coordinate_loc)][0])
         # x = ((loc % 1) * xpara) + self.coordinates[int(intra_coordinate_loc)][0]
         # return x + (y * 1j)
+        print(self.path.point(time))
         return self.path.point(time)
 
 
@@ -71,8 +72,8 @@ class Calculator:
     @staticmethod
     def calculate_constant(n, basefunc):
         integration = 0
-        for i in range(0, 1001):
-            t = i / 1000
+        for i in range(0, 101):
+            t = i / 100
             integration += basefunc.access(t)*(math.e ** (-n * 2 * math.pi * 1j * t))*0.001
         return integration
         #return sci.quad(lambda t: math.e ** (-n * 2 * math.pi * 1j * t), 0, 1)
