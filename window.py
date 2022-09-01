@@ -5,7 +5,7 @@ import cmath
 from Function import Function, Calculator, BaseFunction
 
 filename_base_function = ""
-range_of_n = range(-150, 150)
+range_of_n = range(-80, 80)
 
 plot.style.use('dark_background')
 fig = plot.figure()
@@ -41,7 +41,7 @@ if __name__ == "__main__":
     for n in range_of_n:
         functions.append(Function(Calculator.calculate_constant(n, base_function), n))
 
-    anim = animation.FuncAnimation(fig, animate, init_func=init, frames=np.arange(0.01, 1.0, 0.01), interval=20, blit=True, repeat=False)
+    anim = animation.FuncAnimation(fig, animate, init_func=init, frames=np.arange(0.01, 1.0, 0.002), interval=20, blit=True, repeat=False)
     plot.show()
 
 
