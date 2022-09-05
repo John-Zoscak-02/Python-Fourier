@@ -17,7 +17,7 @@ class BaseFunction:
         # print(coordinatestrings)
         # print(self.coordinates)
 
-        self.file = minidom.parse('Sets/math-pi.svg')
+        self.file = minidom.parse('Sets/{filename}.svg'.format(filename=setname))
         self.path_strings = [path.getAttribute('d') for path
                         in self.file.getElementsByTagName('path')]
         self.file.unlink()
